@@ -1,3 +1,5 @@
+What is the largest 1 to 9 pandigital 9-digit number that can be formed as the concatenated product of an integer with (1,2, ... , n) where n > 1?
+
 n ++ 2n ++ 3n ++ 4n ++ 5n ...
 The smallest n can be is 1. The greatest the concatenated product can be is 987654321.
 This would be if n=987654321. It must go through at least n ++ 2n, so this isn't possible.
