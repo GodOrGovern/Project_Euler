@@ -1,0 +1,18 @@
+n ++ 2n ++ 3n ++ 4n ++ 5n ...
+The smallest n can be is 1. The greatest the concatenated product can be is 987654321.
+This would be if n=987654321. It must go through at least n ++ 2n, so this isn't possible.
+
+If n and 2n are of the same length, the first digit of 2n will be greater than
+the first digit of n. Thus n must be a shorter length than 2n. The first digit
+of n is 9. This means that 2n ... 9n will be of length n + 1. Given that
+there are only 9 available slots, this reduces the possibilities. If n is 1
+digit in length, then it will be concatenated with 2n...4n, each being 2
+digits. n cannot be 2 digits as this would only leave 7 digits, which cannot be
+divided by the requisite length (3). Likewise, n cannot be 3 digits. This means
+n could only be 1 digit or 4 digits.
+
+This just leaves the possible 4 digit permutations to be explored. The first
+digit is known to be 9. The second digit must be < 5 as 95... * 2 will always
+have a 9 in the product. 4 cannot be in the first four digits.
+
+9327 18654

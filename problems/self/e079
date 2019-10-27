@@ -1,0 +1,56 @@
+A common security method used for online banking is to ask the user for
+three random characters from a passcode. Given that the three characters are
+always asked for in order, analyse the file so as to determine the shortest
+possible secret passcode of unknown length
+
+These are the unique three-digit codes from the file:
+
+129 160 162 168 180 289 290 316 318
+319 362 368 389 380 620 629 680 689
+690 710 716 718 719 720 728 729 731
+736 760 762 769 790 890
+
+Some of them can easily be joined, such as 129 and 290:
+
+1290 (1620|1629) (1680|1689)
+2890 3180 (3160|3162) (3620|3629)
+(3680|3689) 3890 6290 6890
+(7160|7162) 7180 7289 7290 (7318|7319)
+(7362|7368) (7620|7629) 7690
+
+The codes that can be joined may in some cases be joined again:
+
+16890 (31620|31629|71620|71629) 36890
+72890 73180 (73620|73629) (73689|73680) 76290
+736890
+
+We should probably now check which of the joined codes conforms to most of the
+original codes. Of the list of highly joined codes, here is how many each
+conforms to (order in accordance with above ordering):
+
+7 (5|6|8|8) 7 7 5 (6|6) (5|5) 10 11
+
+The apparent winner is 736890, but because it is a digit longer than 76290 and
+only conforms to one more code, I will instead select 76290. The codes it does
+not conform to area:
+
+129 160 162 168 180 289 316 318
+319 362 368 389 380 680 689
+710 716 718 719 728 731
+736 890
+
+Putting a 1 to the right of the 7 would decrease this total by six, putting
+it past 736890 despite them having the same number of digits. In that case,
+76290 becomes 716290. That leaves:
+
+168 180 289 316 318
+319 362 368 389 380 680 689
+718 728 731 736 890
+
+I then believe an 8 should go between 2 and 9, yielding 7162890. This further
+reduces the list of non-conforming codes:
+
+316 318 319 362 368 389 380 731 736
+
+Finally, I believe a 3 should be placed to the right of the 7, producing
+73162890. This causes all codes to conform.

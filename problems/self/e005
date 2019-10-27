@@ -1,0 +1,43 @@
+What is the smallest positive number that is evenly divisible by all of the
+numbers from 1 to 20?
+
+If n is a number of the form p1*p2*p3 (etc) where each of p1, p2, and p3 are
+primes, it will evenly divide into any number that is of the form m*p1*p2*p3
+(etc) where m is any integer. If p1, p2, p3, etc are raised to a power then
+the corresponding prime in the second number must be raised to an equal or
+greater power.
+
+Thus in order to find the smallest number that is evenly divisible by all
+number from 1 to 20, one need only find the lowest combination of primes that
+contains the prime factorization of every number from 1 to 20.
+
+This is a table of each number's prime factorization
+|----+---------|
+| 1  | 1       |
+| 2  | 2       |
+| 3  | 3       |
+| 4  | 2*2     |
+| 5  | 5       |
+| 6  | 2*3     |
+| 7  | 7       |
+| 8  | 2*2*2   |
+| 9  | 3*3     |
+| 10 | 2*5     |
+| 11 | 11      |
+| 12 | 2*2*3   |
+| 13 | 13      |
+| 14 | 2*7     |
+| 15 | 3*5     |
+| 16 | 2*2*2*2 |
+| 17 | 17      |
+| 18 | 2*3*3   |
+| 19 | 19      |
+| 20 | 2*2*5   |
+|----+---------|
+
+Only the largest occurence of a prime in any given number needs to be listed.
+For example, 2 appears 18 times, but only 2^4 needs to be included because 2
+divides into any of the above numbers at most 4 times (16). Continuing this
+trend we get (2^4)*(3^2)*5*7*11*13*17*19 (232792560). It can be seen that each
+of the above numbers can be constructed using this prime factorization, meaning
+the resultant number is divisible by all of them.

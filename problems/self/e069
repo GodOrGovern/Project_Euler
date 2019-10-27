@@ -1,0 +1,42 @@
+Euler's Totient function, φ(n), is used to determine the number of numbers less
+than n which are relatively prime to n. Find the value of n ≤ 1,000,000 for
+which n/φ(n) is a maximum.
+
+The totient function has three known identities that are important for solving
+this problem: φ(n1*n2)=φ(n1)*φ(n2)*d/φ(d) where d=gcd(n1, n2),
+φ(n^m)=φ(n)*n^(m-1), and φ(p)=p-1 where p is a prime number. In the first
+equation, if n1 and n2 are both prime, φ(n1*n2)=φ(n1)*φ(n2). Because both
+number are prime, this can be simplified to (n1-1)*(n2-1). The Fundamental
+Theorem of Arithmetic states that all natural numbers have a unique prime
+factorization. Thus if one allows each n to be raised to some exponent m, a
+general formula for the totient value of a number can be found given its prime
+factorization.
+
+For example, what is φ(n1^m1*n2^m2)? Although n1^m1 and
+n2^m2 are not primes themselves, they are definitely coprime, which means
+d/φ(d) = 1. This means φ(n1^m1*n2^m2)=φ(n1^m1)*φ(n2^m2). Using the second
+identity listed above, this simplifies to φ(n1)*n1^(m1-1)*φ(n2)*n2^(m2-1).
+Because n1 and n2 are prime, it reduces to (n1-1)*n1^(m1-1)*(n2-1)*n2^(m1-1).
+
+This pattern of multiplying sequences of (n-1)*n^(m-1) repeats no matter which
+primes are used for n and which natural numbers are used for m. Thus to
+determine the quotient n/φ(n), one need only divide n by this pattern. In order
+to find a value for a specific n, one would have to know its prime
+factorization. In this case, however, we can express n in terms of its prime
+factors. To reduce visual clutter, I will use n=n1^m1, though the pattern
+holds true for n1^m1*n2^m2, n1^m1*n2^m2*n3^m3, etc ad infinitum.
+
+With n=n1^m1, n/φ(n) = n1^m1/((n1-1)*n1^(m1-1)). Of greatest significance is
+that n1^m1 in the numerator and n1^(m1-1) in the denominator cancel out to
+produce just n1 in the numerator. This means n/φ(n) = n1/(n1-1). If n had 2
+prime factors this would look n1*n2/((n1-1)*(n2-1)) and the pattern would
+continue for any number of prime factors.
+
+We are trying to maximize the value of n/φ(n), which we have found to be the
+product p/(p-1) with p being each prime factor of n. The value p/(p-1) is
+larger for smaller values of p and is always greater than 1. This means, in
+order to maximize n/φ(n), one should multiply successive primes starting at 2
+until the value exceeds the upper limit of 10^6, in which case the value
+immediately before is the correct answer.
+
+In this case that value is 510510 (2*3*5*7*11*13*17).
