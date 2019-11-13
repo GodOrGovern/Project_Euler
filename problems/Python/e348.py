@@ -4,6 +4,7 @@ numbers '''
 
 from itertools import count
 from collections import defaultdict
+from euler import get_palindromes
 
 def main():
     ''' Driver function '''
@@ -45,24 +46,6 @@ def cube_list(end):
         cubes.append(cube)
         n += 1
     return cubes
-
-def get_palindromes(low, high):
-    ''' Return a set of all palindromes in interval ['low', 'high'] '''
-    def gen_palindrome():
-        ''' Generator for palindromes, starting with 0 '''
-        yield 0
-        for digits in count(1):
-            first = 10 ** ((digits - 1) // 2)
-            for s in map(str, range(first, 10 * first)):
-                yield int(s + s[-(digits % 2)-1::-1])
-    palindromes = set()
-    for p in gen_palindrome():
-        if p > high:
-            break
-        if p < low:
-            continue
-        palindromes.add(p)
-    return palindromes
 
 if __name__ == "__main__":
     main()

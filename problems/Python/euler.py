@@ -2,8 +2,27 @@
 
 import numpy as np
 from collections import defaultdict
+from itertools import count
 
 src = "/home/david/Documents/Programs/euler/problems/src/"
+
+def get_palindromes(low, high):
+    ''' Return a set of all palindromes in interval ['low', 'high'] '''
+    def gen_palindrome():
+        ''' Generator for palindromes, starting with 0 '''
+        yield 0
+        for digits in count(1):
+            first = 10 ** ((digits - 1) // 2)
+            for s in map(str, range(first, 10 * first)):
+                yield int(s + s[-(digits % 2)-1::-1])
+    palindromes = set()
+    for p in gen_palindrome():
+        if p > high:
+            break
+        if p < low:
+            continue
+        palindromes.add(p)
+    return palindromes
 
 def build_graph(infile, up=False, left=False):
     ''' Load graph into dictionary where edges are weighted. Default is to
