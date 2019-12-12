@@ -155,19 +155,16 @@ def fib():
         yield pp
         pp, p = p, p + pp
 
-def gen_triple():
+def gen_triple(limit=None):
     ''' Generator for primitive Pythagorean triples '''
-    mult = np.array([[[1, -2, 2], [2, -1, 2], [2, -2, 3]],
-                     [[1, 2, 2], [2, 1, 2], [2, 2, 3]],
-                     [[-1, 2, 2], [-2, 1, 2], [-2, 2, 3]]])
-    p = np.array([[3], [4], [5]])
-    yield p
-    old_vals = [p]
-    while True:
-        new_vals = []
-        for v in old_vals:
-            for m in mult:
-                new_val = np.matmul(m, v)
-                new_vals.append(new_val)
-                yield new_val
-        old_vals = new_vals
+    u = np.mat(' 1  2  2; -2 -1 -2; 2 2 3')
+    a = np.mat(' 1  2  2;  2  1  2; 2 2 3')
+    d = np.mat('-1 -2 -2;  2  1  2; 2 2 3')
+    uad = np.array([u, a, d])
+    m = np.array([3, 4, 5])
+    while m.size:
+        m = m.reshape(-1, 3)
+        if limit:
+            m = m[m[:, 2] <= limit]
+        yield from m
+        m = np.dot(m, uad)
