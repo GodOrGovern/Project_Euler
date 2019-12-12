@@ -183,8 +183,10 @@ void rollDice(int* dice, int sides)
     dice[1] = (rand() % sides) + 1;
 }
 
-/* Initialize 'deck'. Out of a total of 16 'cards', 'size' spots are taken by the
-numbers in 'vals' */
+/* 
+ * Initialize 'deck'. Out of a total of 16 'cards', 'size' spots are taken by
+ * the numbers in 'vals'
+ */
 void initDeck(Deck* deck, int* vals, int size)
 {
     deck->picked = 0;
@@ -206,7 +208,7 @@ void shuffle(int* deck)
 }
 
 // Swap values of 'a' and 'b'
-void swap(int *a, int *b)
+void swap(int* a, int* b)
 {
 	int temp = *a;
 	*a = *b;

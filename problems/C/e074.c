@@ -1,7 +1,9 @@
-/* Starting with 69 produces a chain of five non-repeating terms, but the longest
-non-repeating chain with a starting number below one million is sixty terms.
-How many chains, with a starting number below one million, contain exactly
-sixty non-repeating terms? */
+/* 
+ * Starting with 69 produces a chain of five non-repeating terms, but the
+ * longest non-repeating chain with a starting number below one million is sixty
+ * terms. How many chains, with a starting number below one million, contain
+ * exactly sixty non-repeating terms? *
+ */
 
 #include <stdio.h>
 #include <stdbool.h>

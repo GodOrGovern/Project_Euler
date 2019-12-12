@@ -19,7 +19,6 @@ def main():
     chest = [0, [0, 10]+[-1 for _ in range(14)]]
     shuffle(chance[1])
     shuffle(chest[1])
-
     board = fill_board(chance, chest, 200000)
     board_sort = sorted(board)
     result = ''
@@ -43,19 +42,15 @@ def fill_board(chance, chest, turns):
             cur = 10
             doubles = 0
             continue
-
         cur = (dice[0]+dice[1]+cur) % 40
         if cur in {2, 17, 33}:
             cur = pick_card(chest, cur)
             chest[0] += 1
-            continue
-        if cur in {7, 22, 36}:
+        elif cur in {7, 22, 36}:
             cur = pick_card(chance, cur)
             chance[0] += 1
-            continue
-        if cur == 30:
+        elif cur == 30:
             cur = 10
-            continue
     board[0] -= 1
     return board
 
