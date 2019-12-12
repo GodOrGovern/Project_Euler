@@ -1,8 +1,6 @@
-''' Let φ be Euler's totient function, i.e. for a natural number n, φ(n) is
-the number of k, 1 ≤ k ≤ n, for which gcd(k,n) = 1. By iterating φ, each
-positive integer generates a decreasing chain of numbers ending in 1. What is
-the sum of all primes less than 40000000 which generate a chain of length 25?
-'''
+''' Let φ be Euler's totient function. By iterating φ, each positive integer
+generates a decreasing chain of numbers ending in 1. What is the sum of all
+primes less than 40000000 which generate a chain of length 25? '''
 
 from flint import fmpz
 from pyprimesieve import primes
