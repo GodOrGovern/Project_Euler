@@ -33,7 +33,7 @@ def gen_hamming(end):
             for s in [2,3,5]:
                 temp = n*s
                 if temp <= end:
-                    cur.add(temp) 
+                    cur.add(temp)
                     min_cur = min(min_cur, temp)
         smooth.update(cur)
         prev = cur

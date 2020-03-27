@@ -81,7 +81,7 @@ def farey(n):
     a, b, c, d = 0, 1, 1, n
     yield a, b
     while c <= n:
-        k = int((n + b) / d)
+        k = (n + b) // d
         a, b, c, d = c, d, (k*c-a), (k*d-b)
         yield a, b
 

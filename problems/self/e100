@@ -1,0 +1,8 @@
+Find the number of blue discs in the first arrangement to contain over 10^12
+discs in total and have a 50% chance of taking two blue discs at random
+
+This problem is reducible to the diophantine equation:
+    2*a^2 - b^2 - 2*a + b = 0
+
+General solutions were found using sympy.
+The answer is 756872327473

@@ -4,36 +4,32 @@ given cuboid and the shortest route doesn't always have integer length. Find
 the least value of M such that the number of solutions first exceeds one
 million '''
 
-from euler import gen_triple
-from gmpy2 import is_square
-
 def main():
     ''' Driver function '''
-    end = 100 
-    count = 0
-    for a, b in triple_legs(end):
-        if b//2 <= a:
-            count += b//2
-            if a != b:
-                count -= b - a - 1
-        if b < end:
-            count += a//2
-        print(count, a, b)
-    print(count)
-
-def triple_legs(end):
-    ''' Generates tuples where each tuple contains the values of the
-    legs in a Pythagorean triple '''
-    double_end = end * 2
-    for t in gen_triple(double_end):
-        t.sort()
-        a1, b1 = a0, b0 = t[0], t[1]
-        if a1 > end or b1 > double_end:
+    sqrs = gen_sqrs(10000)
+    routes = []
+    max_val = 3305873
+    for n in range(1, 1300):
+        if 2 * sqrs[n] > max_val:
             break
-        while a1 < end and b1 < double_end:
-            yield (a1, b1)
-            a1 += a0
-            b1 += b0
-                    
+        for m in range(n+1, n+1000):
+            route = sqrs[n] + sqrs[m]
+            if route > max_val:
+                break
+            routes += [sqrs[n] + sqrs[m]]
+    routes = sorted(routes)
+    print(routes[10**6])
+    print(routes[2060])
+
+def gen_sqrs(end):
+    ''' Generate all squares up to 'end**2' '''
+    n = sqr = 1
+    sqrs = [sqr]
+    while n < end:
+        sqr += 2*n + 1
+        sqrs += [sqr]
+        n += 1
+    return sqrs
+
 if __name__ == "__main__":
     main()

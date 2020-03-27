@@ -1,0 +1,20 @@
+We shall define an almost equilateral triangle to be a triangle for which two
+sides are equal and the third differs by no more than one unit. Find the sum
+of the perimeters of all almost equilateral triangles with integral side
+lengths and area and whose perimeters do not exceed one billion.
+
+This is reducible to two Diophantine equations:
+    3*x^2 - 4*y^2 + 2*x - 1 = 0
+    3*x^2 - 4*y^2 - 2*x + 1 = 0
+
+We only care about the value of x because it represents the lengths of the
+sides that are equal. Depending on the equation used, the perimeter is simply
+this figure tripled plus or minus one. General solutions were found with sympy
+
+Valid values of x for the first equation (third side is one less):
+17, 241, 3361, 46817, 652081, 9082321, 126500417
+
+Valid values of x for the second equation (third side is one more):
+5, 65, 901, 12545, 174725, 2433601, 33895685
+
+The resulting total is 518408346

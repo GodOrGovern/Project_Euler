@@ -3,7 +3,7 @@ N!. Find f(1,000,000,000,000) '''
 
 def main():
     ''' Driver function '''
-    
+
 def f(n):
     ''' Find the last five digits before the trailing zeroes in 'n!' '''
     cur = 1
