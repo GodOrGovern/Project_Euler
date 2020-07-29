@@ -12,7 +12,7 @@ def main():
     ax+by=c where c=a**2+b**2. Once one (x, y) pair has been found for a given
     (a, b) all others can be generated. A set is used to keep track of valid
     points to avoid duplicates '''
-    end = 2
+    end = 50
     solutions = set()
     for a in range(end+1):
         for b in range(1 if a == 0 else a, end+1):
@@ -20,9 +20,7 @@ def main():
             div = gcd(a, b)
             if c % div != 0:
                 continue
-            mult = c // div
-            x, y = ext_euclid(a, b)
-            x, y = mult*x, mult*y
+            x, y = (c//div*n for n in ext_euclid(a, b))
             for n in range((x-end)*div//b, x*div//b + 1):
                 x1 = x - n * (b // div)
                 y1 = y + n * (a // div)
