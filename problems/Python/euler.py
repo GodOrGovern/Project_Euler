@@ -2,9 +2,14 @@
 
 import numpy as np
 from collections import defaultdict
-from itertools import count
+from itertools import count, chain, combinations
 
-src = "/home/david/Documents/Programs/euler/problems/src/"
+src = "../src/"
+
+def powerset(base_set):
+    ''' Return the powerset of 'base_set' '''
+    xs = list(base_set)
+    return chain.from_iterable(combinations(xs,n) for n in range(len(xs)+1))
 
 def get_palindromes(low, high):
     ''' Return a set of all palindromes in interval ['low', 'high'] '''
