@@ -3,11 +3,11 @@ base/exponent pair on each line, determine which line number has the greatest
 numerical value '''
 
 from math import log
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    pairs = load_data(src+'e099')
+    pairs = load_data(src_file('e099'))
     cur_max = pairs[0]
     for p in pairs[1:]:
         exp = log(cur_max[0], p[0])

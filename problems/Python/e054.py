@@ -1,12 +1,12 @@
 ''' How many hands in the source file does Player 1 win? '''
 
 from collections import Counter
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
     count = 0
-    for line in open(src+'e054'):
+    for line in open(src_file('e054')):
         p1 = line[0:14].split()
         p2 = line[15:29].split()
         if hand_rank(p1) > hand_rank(p2):

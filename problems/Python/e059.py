@@ -3,11 +3,11 @@ knowledge that the plain text must contain common English words, decrypt the
 message and find the sum of the ASCII values in the original text. '''
 
 from itertools import permutations
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    encrypted = [int(n) for n in open(src+'e059').read().split(',')]
+    encrypted = [int(n) for n in open(src_file('e059')).read().split(',')]
     decrypted = test_keys(encrypted)
     print(sum([ord(c) for c in decrypted]))
 

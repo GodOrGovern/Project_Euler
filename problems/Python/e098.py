@@ -11,11 +11,11 @@ pair? '''
 
 from collections import defaultdict
 from itertools import permutations
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver functions '''
-    anagrams = get_anagrams(src+'e098')
+    anagrams = get_anagrams(src_file('e098'))
     max_length = len(max(anagrams, key=lambda i: len(i[0]))[0])
     sqrs, sqr_set = squares_by_length(max_length)
     max_sqr = 0

@@ -8,12 +8,12 @@ special sum sets, A1, A2, ..., A_k, and find the value of S(A1) + S(A2) + ...
 + S(A_k) '''
 
 from itertools import chain, combinations
-from euler import src, powerset
+from euler import src_file, powerset
 
 def main():
     ''' Driver function '''
     total = 0
-    for s in load_data(src+'e105'):
+    for s in load_data(src_file('e105')):
         if is_optimum_special_set(s):
             total += sum(s)
     print(total)

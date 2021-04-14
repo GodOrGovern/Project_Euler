@@ -3,13 +3,13 @@ difficulty, but all with unique solutions. By solving all fifty puzzles find
 the sum of the 3-digit numbers found in the top left corner of each solution
 grid '''
 
-from euler import src
+from euler import src_file
 from sudoku import solve
 
 def main():
     ''' Driver function '''
     total = 0
-    for puzzle in load_puzzles(src + 'e096'):
+    for puzzle in load_puzzles(src_file('e096')):
         solved = solve(puzzle)
         total += int(solved['A1'] + solved['A2'] + solved['A3'])
     print(total)

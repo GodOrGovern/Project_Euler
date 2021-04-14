@@ -2,12 +2,12 @@
 necessarily minimal, Roman numerals. Find the number of characters saved by
 writing each of these in their minimal form '''
 
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
     total = 0
-    with open(src+'e089') as data:
+    with open(src_file('e089')) as data:
         for line in data:
             old_numeral = line.strip()
             num = roman_to_int(old_numeral)

@@ -4,11 +4,11 @@ value is a triangle number then we shall call the word a triangle word.
 How many are words in the source file are triangle words? '''
 
 import csv
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    words = list(csv.reader(open(src+'e042')))[0]
+    words = list(csv.reader(open(src_file('e042'))))[0]
     count = 0
     for word in words:
         value = word_value(word)

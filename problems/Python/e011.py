@@ -3,11 +3,11 @@
 file? '''
 
 import numpy as np
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    data = open(src+'e011', 'r')
+    data = open(src_file('e011'))
     grid = load_grid(data)
     maximum = max([max_across(grid), max_across(np.rot90(grid)), max_diag(grid),
                    max_diag(np.fliplr(grid))])

@@ -2,11 +2,11 @@
 triangles, find the number of triangles for which the interior contains the
 origin '''
 
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    triangles = load_triangles(src+'e102')
+    triangles = load_triangles(src_file('e102'))
     print(sum(origin_in(t) for t in triangles))
 
 def load_triangles(infile):

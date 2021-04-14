@@ -5,21 +5,17 @@ digit. So, if the sequence was 1234 and you guessed 2036, you'd be told that
 you have one correct digit; however, you would NOT be told that you also have
 another digit in the wrong place '''
 
-from euler import src
+from euler import src_file
 
 def main():
     ''' Driver function '''
-    seqs = read_file(src+'e185')
-    #seqs = {(9,0,3,4,2): 2, (7,0,7,9,4): 0, (3,9,4,5,8): 2,
-    #        (3,4,1,0,9): 1, (5,1,5,4,5): 2, (1,2,5,3,1): 1}
+    seqs = read_file(src_file('e185'))
     poss = poss_digits(seqs)
     def search(result, index):
         for val in seqs.values():
-            if val < 0 or val > (16-index):
+            if not (0 <= val <= (16-index)):
                 return None
-        #if index == 5:
         if index == 16:
-            print(result)
             for val in seqs.values():
                 if val != 0:
                     return None

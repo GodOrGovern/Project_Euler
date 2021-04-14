@@ -1,10 +1,11 @@
 ''' Tools that are useful for Project Euler '''
 
+import os
 import numpy as np
 from collections import defaultdict
 from itertools import count, chain, combinations
 
-src = "../src/"
+src_file = lambda file_name: os.path.join(os.path.realpath('../src'), file_name)
 
 def powerset(base_set):
     ''' Return the powerset of 'base_set' '''
