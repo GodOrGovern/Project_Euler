@@ -24,8 +24,8 @@ def last_digits(num, digits):
     return val
 
 def mults_of_nums(nums, end):
-    ''' Return a set containing all numbers <= end that are divisble by at
-    least one of the numbers in nums. 1 is also in the returned set '''
+    ''' Return a set containing all numbers <= end whose prime factors are a
+    subset of nums (including 1 for the empty set) '''
     nums = sorted(nums)
     # sets are used because this process generates duplicates
     mults = {1}
