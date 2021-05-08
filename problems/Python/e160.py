@@ -19,13 +19,14 @@ def last_digits(num, digits):
     prod = [1]
     for n in range(1, mod):
         prod += [(prod[-1] if (n%2==0 or n%5==0) else n*prod[-1]) % mod]
-    for n in mults_of_nums([2, 5], num):
+    for n in prods_of_nums([2, 5], num):
         val = (val * prod[(num//n) % mod]) % mod
     return val
 
-def mults_of_nums(nums, end):
-    ''' Return a set containing all numbers <= end whose prime factors are a
-    subset of nums (including 1 for the empty set) '''
+def prods_of_nums(nums, end):
+    ''' Return a set containing all numbers <= end that can be expressed as a
+    product of the numbers in nums (repeats allowed) including 1 (for the
+    product of 0 numbers) '''
     nums = sorted(nums)
     # sets are used because this process generates duplicates
     mults = {1}
