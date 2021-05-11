@@ -91,6 +91,26 @@ def farey(n):
         a, b, c, d = c, d, (k*c-a), (k*d-b)
         yield a, b
 
+def tilings(tiles, min_length=1, min_dist=0, mix_lengths=False):
+    ''' Return the number of ways to tile a row of length tiles using blocks of
+    exactly length min_length (if mix_lengths=False) or at least length
+    min_length (if mix_lengths=True) such that each block is separated by at
+    least min_dist spaces '''
+    cache = [0] * (tiles+1)
+    def helper(tiles):
+        ''' Returns the number of ways to tile a row of length tiles according
+        to the function parameters '''
+        if tiles < min_length:
+            return 0
+        if cache[tiles] != 0:
+            return cache[tiles]
+        for space in range(tiles-min_length+1):
+            max_length = tiles-space+1 if mix_lengths else min_length+1
+            for length in range(min_length, max_length):
+                cache[tiles] += helper(tiles-space-length-min_dist)+1
+        return cache[tiles]
+    return helper(tiles)
+
 def partition(parts, whole):
     ''' Calculate the number of ways 'whole' can be partitioned using 'parts' '''
     table = [0 for x in range(whole+1)]
