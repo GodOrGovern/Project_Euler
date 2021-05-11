@@ -91,7 +91,7 @@ def farey(n):
         a, b, c, d = c, d, (k*c-a), (k*d-b)
         yield a, b
 
-def tilings(tiles, min_length=1, min_dist=0, mix_lengths=False):
+def tilings(tiles, min_length=1, max_length=float("inf"), min_dist=0, mix_lengths=False):
     ''' Return the number of ways to tile a row of length tiles using blocks of
     exactly length min_length (if mix_lengths=False) or at least length
     min_length (if mix_lengths=True) such that each block is separated by at
@@ -105,8 +105,8 @@ def tilings(tiles, min_length=1, min_dist=0, mix_lengths=False):
         if cache[tiles] != 0:
             return cache[tiles]
         for space in range(tiles-min_length+1):
-            max_length = tiles-space+1 if mix_lengths else min_length+1
-            for length in range(min_length, max_length):
+            cur_max_length = min(max_length,tiles-space) if mix_lengths else min_length
+            for length in range(min_length, cur_max_length+1):
                 cache[tiles] += helper(tiles-space-length-min_dist)+1
         return cache[tiles]
     return helper(tiles)
