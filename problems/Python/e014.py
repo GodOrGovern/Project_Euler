@@ -1,29 +1,25 @@
-''' Which starting number, under one million, produces the longest chain? '''
+''' Which starting number, under one million, produces the longest collatz
+sequence? '''
 
 def main():
-    ''' Removes all elements in sequence from nums, reducing the number of
-    values to check '''
-    nums = {x for x in range(1, 1000000)}
-    maximum = [0, 0]
-    while nums:
-        num = nums.pop()
-        sequence = collatz(num)
-        length = len(sequence)
-        if length > maximum[1]:
-            maximum = [num, length]
-        nums.difference_update(sequence)
-    print(maximum[0])
+    ''' Driver function '''
+    print(longest_collatz(10**6))
 
-def collatz(num):
-    ''' Return collatz sequence starting with num '''
-    sequence = []
-    while num != 1:
-        if num % 2 == 0:
-            num = int(num / 2)
-        elif num % 2 == 1:
-            num = 3 * num + 1
-        sequence.append(num)
-    return sequence
+def longest_collatz(end):
+    ''' Return the number (less than end) that produces the longest Collatz
+    sequence '''
+    lengths = [0] * end
+    for n in range(end-1, 1, -1):
+        prev = [n]
+        while n:
+            if n < end and (lengths[n] != 0 or n == 1):
+                for i,p in enumerate(prev[::-1]):
+                    if p < end:
+                        lengths[p] = lengths[n] + i + 1
+                break
+            n = (n // 2) if (n % 2 == 0) else (3*n + 1)
+            prev.append(n)
+    return lengths.index(max(lengths))
 
 if __name__ == "__main__":
     main()
