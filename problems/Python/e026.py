@@ -11,7 +11,7 @@ def main():
             n //= 2
         while n % 5 == 0:
             n //= 5
-        max_length = maximum(n_order(10, n), max_length)
+        max_length = max(n_order(10, n), max_length)
     print(max_length)
 
 if __name__ == "__main__":
