@@ -5,12 +5,13 @@ import numpy as np
 from sympy import divisors
 
 def main():
-    ''' All integers greater than 20161 can be written as the sum of two
-    abundant numbers '''
-    abundant = abundant(20161)
+    ''' Driver function '''
+    # All integers greater than 20161 can be written as the sum of two
+    # abundant numbers
+    abundant = get_abundant(20161)
     print(no_abundant_sum(abundant, 20161))
 
-def abundant(end):
+def get_abundant(end):
     ''' Return an array of all abundant numbers below 'end' '''
     abundant = np.array([], dtype=int)
     for num in range(1, end + 1):
