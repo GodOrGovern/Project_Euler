@@ -194,3 +194,14 @@ def gen_triple(limit=None):
             m = m[m[:, 2] <= limit]
         yield from m
         m = np.dot(m, uad)
+
+def totients_to(end):
+    from pyprimesieve import primes
+    ''' Return a list containing values of Euler's totient function phi(n) for
+    1 <= n <= end '''
+    vals = list(range(1, end+1))
+    for p in primes(end+1):
+        for m in range(p, end+1, p):
+            vals[m-1] = (vals[m-1] * (p - 1)) // p
+    return vals
+
