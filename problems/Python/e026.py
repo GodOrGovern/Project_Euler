@@ -1,18 +1,23 @@
 ''' Find the value of d < 1000 for which 1/d contains the longest recurring
 cycle in its decimal fraction part '''
 
-from sympy.ntheory import n_order
+from euler import mult_order
 
 def main():
     ''' Make n coprime to 10 and then check the order of 10 modulo n '''
+    max_n = 0
     max_length = 0
     for n in range(3, 1000, 2):
-        while n % 2 == 0:
-            n //= 2
-        while n % 5 == 0:
-            n //= 5
-        max_length = max(n_order(10, n), max_length)
-    print(max_length)
+        coprime_n = n
+        while coprime_n % 2 == 0:
+            coprime_n //= 2
+        while coprime_n % 5 == 0:
+            coprime_n //= 5
+        cur_length = mult_order(10, coprime_n)
+        if cur_length > max_length:
+            max_n = n
+            max_length = cur_length
+    print(max_n)
 
 if __name__ == "__main__":
     main()

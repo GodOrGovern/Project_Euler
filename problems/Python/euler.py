@@ -205,3 +205,13 @@ def totients_to(end):
             vals[m-1] = (vals[m-1] * (p - 1)) // p
     return vals
 
+def mult_order(a, n):
+    ''' Return the multiplicative order of 'a**k % n == 1'. Assumes 'gcd(a, n)'
+    is 1. The function returns -1 if 'k' exceeds 'n' '''
+    result, k = 1, 1
+    while k < n:
+        result = result * a % n
+        if result == 1:
+            return k
+        k += 1
+    return -1

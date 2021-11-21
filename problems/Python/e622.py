@@ -9,6 +9,7 @@ number. Find the sum of all values of n that satisfy s(n)=60 '''
 
 from functools import reduce
 from pyprimesieve import factorize
+from euler import mult_order
 
 # https://math.stackexchange.com/questions/753712/modulo-arithmetic-a-1-mod-n
 def main():
@@ -18,7 +19,7 @@ def main():
     count = 0
     for n in gen_divisors(end-1):
         val = (end - 1) // n
-        if multi_order(2, val) == shuffles:
+        if mult_order(2, val) == shuffles:
             count += val + 1
     print(count)
 
@@ -39,17 +40,6 @@ def gen_divisors(n):
             i += 1
             if i >= nfactors:
                 return
-
-def multi_order(a, n):
-    ''' Return the multiplicative order of 'a**k % n == 1'. Assumes 'gcd(a, n)'
-    is 1. The function returns -1 if 'k' exceeds 'n' '''
-    result, k = 1, 1
-    while k < n:
-        result = result * a % n
-        if result == 1:
-            return k
-        k += 1
-    return -1
 
 if __name__ == "__main__":
     main()
